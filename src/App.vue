@@ -40,9 +40,11 @@
 
           <v-spacer></v-spacer>
 
+          <v-flex class="d-flex justify-end">
           <v-btn v-for="icon in icons" :key="icon.graphic" class="mx-4" dark icon :href="icon.url" target="_blank">
             <v-icon size="24px">{{ icon.graphic }}</v-icon>
           </v-btn>
+          </v-flex>
         </v-card-title>
         
         
@@ -60,8 +62,8 @@ export default {
       sideNav:false,
       menuItems: [
         {icon: 'home', title: 'Home', link: '/'},
-        {icon: 'home', title: 'About',link: '/About'},
-        {icon: 'home', title: 'Projects', link: '/Projects' },
+        {icon: 'fingerprint', title: 'About',link: '/About'},
+        {icon: 'mdi-briefcase-variant', title: 'Projects', link: '/Projects' },
         // {icon: 'home', title: 'Resume'},
         // {icon: 'home', title: 'Contact'},
       ],

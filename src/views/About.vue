@@ -14,7 +14,7 @@
             functional programming in Haskell, as elective language I chose Scala. 
             If you want to see all courses 
             <a href="https://syllabuskrk.agh.edu.pl/2019-2020/pl/magnesite/study_plans/stacjonarne-informatyka"
-              class="text-decoration-none white--text" target="_blank">
+              class="text-decoration-none white--text font-weight-bold" target="_blank">
               click here (poorly only in polish)
             </a> 
           </h1>
@@ -29,28 +29,29 @@
         <br>
         <v-flex offset-md2 v-for="item in learnings" :key="item.text">
           <h1 class="headline">{{item.text}}<br> 
-              <a :href="item.url"
-                class="text-decoration-none white--text" target="_blank">
+              <v-btn text dark :href="item.url"
+                class="text-decoration-none white--text font-weight-bold" target="_blank">
                 {{item.profile}}
-              </a>
+              </v-btn>
           </h1>
           <br>
         </v-flex>
       </v-flex>
     </v-layout>
 
-    
-
-
     <v-layout row wrap>
       <v-flex xs12 md8 offset-md2>
         <h1 class="headline text-center"> 
-          Below my achievements (i.e certifcation of finishing course, place in contest)
+          <!-- Below my achievements (i.e certifcation of finishing course, place in contest). <br> -->
+          To see list of my projects 
+          <a href="/Projects" class="text-decoration-none font-weight-bold white--text">
+            click here
+          </a>
         </h1>
-        <v-flex md8 offset-md2>
+        <!-- <v-flex md8 offset-md2>
           <Carousel>
           </Carousel>
-        </v-flex>
+        </v-flex> -->
       </v-flex>
     </v-layout>
   </v-container>
@@ -58,14 +59,12 @@
 
 <script>
 
-import ProjectList from '@/components/ProjectList'
 import Carousel from '@/components/Carousel'
 
 export default {
   name: 'About',
 
   components: {
-    ProjectList,
     Carousel
   },
   data(){

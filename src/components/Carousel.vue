@@ -8,7 +8,7 @@
                     :src="project.imageUrl"
                     :key="project.id"
                     @click="onLoadProject(project.id)">
-                        <div class="title">
+                        <div class="title" v-if="project.title !== null">
                             <div class="text">{{project.title}}</div>
                         </div>
                     </v-carousel-item>
@@ -20,11 +20,7 @@
 
 <script>
 export default {
-    computed: {
-        projects (){
-            return this.$store.getters.featuredProjects;
-        }
-    },
+    props: ['projects'],
     methods:{
        onLoadProject(id){
            this.$router.push('/projects/'+id);

@@ -25,7 +25,7 @@
           <h1 class="headline"> During my developing programming skills I made some projects.<br/> 
           Below images of final application of some of them. </h1>
           <v-btn dark text router to="/projects" class="headline">To see all projects</v-btn>
-          <Carousel>
+          <Carousel v-bind:projects="prepareProjectsForCarousel()">
           </Carousel>
         </v-col>
       </v-flex>
@@ -34,10 +34,9 @@
     <v-layout row wrap class="pt-10" id="Contact">
       <v-flex xs12 md8 offset-md2>
         <v-col class="text-center pt-15">
-          <h1>If you want see my resume choose preferable language and click below button. <br/> 
-          If you want contact with here is <a href="mailto:radoslawszuma@gmail.com" class="text-decoration-none white--text"> email</a></h1>
-          <v-btn dark text>PL</v-btn>|<v-btn dark text>ENG</v-btn>
-          
+          <h1 class="headline">If you want see my resume choose preferable language and click below button. <br/> 
+          If you want contact with me <a href="mailto:radoslawszuma@gmail.com" class="text-decoration-none font-weight-bold white--text">here is email</a></h1>
+          <v-btn :href="resumePL" target="_blank" dark text>PL</v-btn>|<v-btn :href="resumeENG" target="_blank" dark text>ENG</v-btn>
         </v-col>
       </v-flex>
     </v-layout>
@@ -54,6 +53,19 @@ export default {
   components: {
     Carousel
   },
+  computed: {
+        resumePL (){
+          return this.$store.getters.loadedResumes['pl'];
+        },
+        resumeENG (){
+          return this.$store.getters.loadedResumes['eng'];
+        }
+    },
+    methods: {
+      prepareProjectsForCarousel(){
+          return this.$store.getters.shortenProjects;
+      }
+    }
 }
 </script>
 
