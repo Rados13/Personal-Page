@@ -15,7 +15,7 @@ new Vue({
   vuetify,
   render: h => h(App),
   created(){
-    this.$store.dispatch('loadProjects')
+    this.$store.dispatch('loadDatabase')
     this.$store.dispatch('loadFiles')
   }
 }).$mount('#app')

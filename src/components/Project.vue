@@ -13,6 +13,8 @@
                 </v-card-subtitle>
                  <v-img 
                     :src="project.imageUrl"
+                    alt="img"
+                    contain
                     height="400px"
                  >
                 </v-img>
@@ -23,6 +25,7 @@
                     <div class="body-1 white--text">
                     {{project.idea}}
                     </div>
+                    <a v-show="project.hasOwnProperty('link')" :href="project.link" target="_blank">Link to this app</a>
                 </v-card-text>
                 <v-card-subtitle class="headline font-weight-bold white--text">
                     <h4>Used technologies</h4>
@@ -87,7 +90,7 @@ export default {
             var prop = this.project;
             var result = [];
             var photoId =0;
-            prop.imagesUrl.forEach(elem => result.push({'id': prop.id, 'imageUrl': elem}));
+            prop.imagesUrl.forEach(elem => result.push({'imageUrl': elem}));
             return result;
         }
     }

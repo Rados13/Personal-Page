@@ -7,7 +7,10 @@ export default new Vuex.Store({
   state: {
     loadedProjects: [],
     loadedResumes: {},
-    loadedPhotos: {},
+    loadedPersonal: {},
+    loadedTechnologies: [],    
+    loadedLearnings: {},
+    loadedSummary: "",
   },
   mutations: {
     setLoadedProjects (state,payload){
@@ -16,9 +19,21 @@ export default new Vuex.Store({
     setLoadedResumes(state,payload){
       state.loadedResumes = payload;
     },
+    setLoadedPersonal(state,payload){
+      state.loadedPersonal = payload;
+    },
+    setLoadedTechnologies(state,payload){
+      state.loadedTechnologies = payload;
+    },
+    setLoadedLearnings(state,payload){
+      state.loadedLearnings = payload;
+    },
+    setLoadedSummary(state,payload){
+      state.loadedSummary = payload;
+    }
   },
   actions: {
-    loadProjects ({commit}) {
+    loadDatabase ({commit}) {
       var projects;
       db.collection('projects').get().then((snapshot) => {
         projects = snapshot.docs.map(doc => doc.data());
@@ -33,6 +48,9 @@ export default new Vuex.Store({
         });
         commit('setLoadedProjects',projects);
       });
+      db.collection('about').doc('technologies').get().then(doc => commit('setLoadedTechnologies',doc.data()))
+      db.collection('about').doc('summary').get().then(doc=> commit('setLoadedSummary',doc.data()));
+      db.collection('about').doc('learnings').get().then(doc => commit('setLoadedLearnings',doc.data()));
     },
     loadFiles({commit}){
       var resumes = {}
@@ -43,6 +61,10 @@ export default new Vuex.Store({
         });
         commit('setLoadedResumes',resumes);
         });
+      })
+      console.log(resumes);
+      storage.ref('personal/IMG_20180905_162748.jpg').getDownloadURL().then(url =>{
+        commit('setLoadedPersonal',url);
       })
     },
   },
@@ -67,6 +89,18 @@ export default new Vuex.Store({
     },
     loadedResumes(state){
       return state.loadedResumes;
+    },
+    loadedPersonal(state){
+      return state.loadedPersonal;
+    },
+    loadedTechnologies(state){
+      return state.loadedTechnologies;
+    },
+    loadedSummary(state){
+      return state.loadedSummary;
+    },
+    loadedLearnings(state){
+      return state.loadedLearnings;
     }
 
   }

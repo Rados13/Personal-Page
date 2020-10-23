@@ -2,7 +2,7 @@
     <v-container fluid class="pa-0 pt-10 front">
         <v-layout row wrap>
             <v-flex>
-                <v-carousel style="cursor: pointer;">
+                <v-carousel style="cursor: pointer; max-height=500px; max-width=100%;" height="auto">
                     <v-carousel-item
                     v-for="project in projects"
                     :src="project.imageUrl"
@@ -23,7 +23,9 @@ export default {
     props: ['projects'],
     methods:{
        onLoadProject(id){
-           this.$router.push('/projects/'+id);
+           if(this.$store.getters.loadedProjects.filter(elem => elem.id === id).length !== 0){
+               this.$router.push('/projects/'+id);
+            }
        } 
     }
 }

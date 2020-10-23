@@ -3,7 +3,7 @@
       <v-layout row wrap class="mb-2">
           <v-flex xs12 sm10 offset-sm1 >
             <v-row class="pa-10"></v-row>  
-            <h1 class="text-center">There is list of all projects I made. I divided them on two groups created for university course and create for myself.</h1>
+            <h1 class="text-center">There is list of some projects I made. I divided them on two groups created for university course and create for myself.</h1>
             <v-flex class="pt-10 pb-10">
                 <v-img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Farmer_meme.jpg"></v-img>
             </v-flex>
@@ -21,6 +21,7 @@
                         <v-flex xs5 sm4 md3>
                             <v-img 
                              :src="project.imageUrl"
+                             contain
                              height="130px"
                             >
                             </v-img>

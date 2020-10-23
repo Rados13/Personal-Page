@@ -36,7 +36,7 @@
         <v-col class="text-center pt-15">
           <h1 class="headline">If you want see my resume choose preferable language and click below button. <br/> 
           If you want contact with me <a href="mailto:radoslawszuma@gmail.com" class="text-decoration-none font-weight-bold white--text">here is email</a></h1>
-          <v-btn :href="resumePL" target="_blank" dark text>PL</v-btn>|<v-btn :href="resumeENG" target="_blank" dark text>ENG</v-btn>
+          <v-btn dark text @click="open('pl')">PL</v-btn>|<v-btn dark text @click="open('eng')">ENG</v-btn>
         </v-col>
       </v-flex>
     </v-layout>
@@ -54,18 +54,22 @@ export default {
     Carousel
   },
   computed: {
-        resumePL (){
-          return this.$store.getters.loadedResumes['pl'];
-        },
-        resumeENG (){
-          return this.$store.getters.loadedResumes['eng'];
-        }
+    resumePL(){
+      return this.$store.getters.loadedResumes['pl'];
     },
-    methods: {
+    resumeENG(){
+      return this.$store.getters.loadedResumes['eng'];
+    }
+  },
+  methods: {
       prepareProjectsForCarousel(){
           return this.$store.getters.shortenProjects;
+      },
+      open(type){
+        if(type=="pl")window.open(this.resumePL,"_blank");
+        else window.open(this.resumeENG,"_blank");
       }
-    }
+  }
 }
 </script>
 

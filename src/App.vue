@@ -17,7 +17,7 @@
           <v-app-bar-nav-icon @click="sideNav = !sideNav"></v-app-bar-nav-icon>
         </span>
         <v-toolbar-title>
-          <router-link to="/" tag="span" style="cursor: pointer">Main page</router-link>
+          <router-link to="/" tag="span" style="cursor: pointer">Radosław Szuma - Private Page</router-link>
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-xs-only">
